@@ -1,0 +1,100 @@
+﻿<html>
+<head>
+    <title>test</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="ikon.png" type="image/png">
+    <link href="test.css" rel="stylesheet">
+    <link href="animate.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+    <body>
+        <div class="texta"><a href="test.html">refresh</a></div>
+       <div class="cont bounceInUp animated">
+            <div class="text bounceInUp animated">тест для проверки знаний</div>
+            <div class="test bounceInUp animated">1) сколько ног у 38 собак?</div>
+               <div class="cellotvet">
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>38</div>
+                <div class="otvet true bounceInUp animated"><i class="far fa-square square"></i>152</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>9</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>26</div>
+           </div>
+           <div class="test bounceInUp animated">2) (√5)<sup>2</sup>?</div>
+               <div class="cellotvet">
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>25</div>
+                <div class="otvet true bounceInUp animated"><i class="far fa-square square"></i>5 </div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>-25</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>255</div>
+                   </div>
+            <div class="test bounceInUp animated">3) Кто открил америку?</div>
+               <div class="cellotvet">
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Викинги</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Колумб</div>
+                <div class="otvet true bounceInUp animated"><i class="far fa-square square"></i>моя бабушка</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>географичка</div>
+                   </div>
+            <div class="test bounceInUp animated">4) какая звезда ближе всего к солнцу?</div>
+               <div class="cellotvet">
+                <div class="otvet true bounceInUp animated"><i class="far fa-square square"></i>я</div>
+                <div class="otvet bounceInUp animated"> <i class="far fa-square square"></i>Проксимо-центавра</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Солнце</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Светило</div>
+                   </div>
+            <div class="test bounceInUp animated">5) какая из перечисленних планет - спутник юпитера</div>
+               <div class="cellotvet">
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Луна</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>Фобос</div>
+                <div class="otvet true bounceInUp animated"><i class="far fa-square square"></i>Ганимед</div>
+                <div class="otvet bounceInUp animated"><i class="far fa-square square"></i>деймос</div>
+                   </div>
+            <div class="finalResult">
+					<h3>Как ты думаеш на сколько ты сдал?</h3>
+					<div class="resultContainer"></div>
+                <div id="halfText"></div><br>
+                <div id="halfImage"><img src="sup.jpg"></div><br>
+                <div class="halfText"></div>
+			</div>
+            <div class="end"></div>
+        </div>
+        <script>
+                var texting
+                var kilkist = 5
+            $(function(){
+                var ocinka = 0;
+                $(".otvet").click(function(){
+    	           var $i = $(this).find('.far');
+                    $(this).siblings().addClass('fade');
+                    $(this).addClass('fade');
+                    if($(this).hasClass("true")){
+                        $(this).siblings().unbind("click");
+                        $(this).addClass('correct');
+                        $i.removeClass('far fa-square square').addClass('far fa-check-square square');
+                        ocinka++
+                        kilkist--
+                        console.log(ocinka);
+                    }else{
+                        $(this).siblings().unbind("click");
+                        $(this).addClass('uncorrect');
+                        $i.removeClass('far fa-square square').addClass('far fa-check-square square');
+                        $(this).parent().find(".true").addClass('correct')
+                        kilkist--
+                        console.log(ocinka);
+                    }
+                if( kilkist === 0){
+                    $(".finalResult").css("display", "inline-block")
+                    $(".finalResult").slideDown("3000")
+                    $("#halfText").text('Ти заробив ' + ocinka + ' балів з 5 питань')
+                    $(".halfText").text(texting)}
+                if( ocinka <= 2){
+                    texting = "Тебе нужно больше старатся"}
+                if( ocinka === 3){
+                    texting = "Так и так ... лутше в следующий раз"}
+                if( ocinka === 4){
+                    texting = "Надо еще подумать"}
+                if( ocinka === 5){
+                    texting = "идеально"}
+                });
+            });
+        </script>
+    </body>
+</html>
